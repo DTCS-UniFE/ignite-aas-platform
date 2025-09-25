@@ -1,0 +1,24 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: mycluster
+servers: 3
+agents: 3
+kubeAPI:
+  host: "localhost"
+  hostPort: "6550"
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+
+options:
+  k3s:
+    extraArgs:
+      - arg: "--tls-san=localhost"
+        nodeFilters:
+          - server:*
+      # Taint master nodes so no Pods will be scheduled on them
+      - arg: "--node-taint=node-role.kubernetes.io/master=:NoSchedule"
+        nodeFilters:
+          - server:*

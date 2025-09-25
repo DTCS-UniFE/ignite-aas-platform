@@ -1,0 +1,8 @@
+apiVersion: igni.te/v1
+kind: AAS
+metadata:
+  name: test-aas
+spec:
+  image: ghcr.io/dtcs-unife/robotic-arm-aas:latest
+  targetNode: k3d-mycluster-agent-0
+  valkeyName: test-valkey

@@ -1,0 +1,18 @@
+services:
+  nfs-server:
+    image: itsthenetwork/nfs-server-alpine:latest
+    container_name: nfs-server
+    privileged: true
+    ports:
+      - "2049:2049"
+    volumes:
+      - ./data:/nfs
+    environment:
+      - SHARED_DIRECTORY=/nfs
+
+# Testing the NFS on your Linux host:
+# To mount the shared folder (NOTE: need to mount "/", not "/nfs"):
+# sudo mount -t nfs -o vers=4 localhost:/ ./sharedfolder
+
+# To unmount:
+# sudo umount ./sharedfolder
