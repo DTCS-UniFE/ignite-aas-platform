@@ -70,12 +70,12 @@ cd /path/to/this-repo
 
 ### Deploy the Persistent Volume resource for Valkey
 ```bash
-kubectl apply -f nfs-pv.yaml
+kubectl apply -f manifest/nfs-pv.yaml
 ```
 
 ### Apply the Custom Resource Definition (CRD)
 ```bash
-kubectl apply -f crd.yaml
+kubectl apply -f manifest/crd.yaml
 ```
 
 ### Start the Kopf Operator (outside the cluster)
@@ -88,12 +88,12 @@ kopf run kopf-operator.py
 
 ### Create an application with the Custom Resource
 ```bash
-kubectl apply -f aas.yaml
+kubectl apply -f manifest/aas.yaml
 ```
 
 ### Create the Ingress to expose the AAS
 ```bash
-kubectl apply -f ingress.yml
+kubectl apply -f manifest/ingress.yaml
 ```
 
 ### Test to verify the AAS robotic arm functionality
@@ -142,3 +142,14 @@ You should see:
 {"position":[1.0,2.0,3.0],"status":"idle"}
 ```
 Confirming the application was migrated and state was successfully restored.
+
+## 7. Stop everything
+If you want to stop everything, you should:
+- Stop kopf-operator and migrate-app with a CTRL-C
+- Run `k3d cluster delete mycluster`
+- And **only** after that, you can stop the NFS docker compose with a CTRL-C.
+  - If you also want to delete all Valkey data:
+  ```bash
+  cd nfs
+  rm -rf data/
+  ```
