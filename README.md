@@ -9,7 +9,7 @@ This project demonstrates how to dynamically orchestrate a Flask application usi
 - **CRD** (Custom Resource Definition) – Custom resource to model an AAS
 - [Valkey](https://valkey.io/) – In-memory database (Redis-compatible)
 - **NFS** – For shared persistence between nodes
-- [Flask](https://flask.palletsprojects.com/) – API for workload migration
+- [FastAPI](https://fastapi.tiangolo.com/) – API for workload migration
 
 ## Prerequisites
 
