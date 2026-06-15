@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>K3d Cluster Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>K3d Cluster Dashboard</h1>
+    <div id="info">Caricamento...</div>
+  </header>
+
+  <main>
+    <div id="canvas-wrap">
+      <div id="nodes-area"></div>
+
+      <!-- Riquadro Migrazione AAS -->
+       <div id="migration-wrapper">
+      <div id="migration-box" class="node">
+        <h3>Migrazione AAS</h3>
+        <label for="worker-select">Seleziona nodo worker:</label>
+        <select id="worker-select">
+          <option value="">-- scegli nodo --</option>
+        </select>
+        <button id="migrate-btn">Migra</button>
+        <p id="migration-status" style="margin-top:8px;font-size:13px;"></p>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <small>Serve su <code>/api/cluster</code> (FastAPI) — aggiorna ogni 10s</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
