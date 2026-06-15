@@ -143,7 +143,15 @@ You should see:
 ```
 Confirming the application was migrated and state was successfully restored.
 
-## 7. Stop everything
+## 7. Dashboard
+The dashboard can be started with:
+```bash
+uvicorn dashboard_api:app --reload --host 0.0.0.0 --port 5050
+```
+Then open your browser and go to: `http://localhost:5050`
+
+
+## 8. Stop everything
 If you want to stop everything, you should:
 - Stop kopf-operator and migrate-app with a CTRL-C
 - Run `k3d cluster delete mycluster`
